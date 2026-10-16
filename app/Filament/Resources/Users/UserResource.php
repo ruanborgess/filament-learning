@@ -21,26 +21,11 @@ class UserResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'firstName';
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->schema([
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('password')
-                    ->password()
-                    ->required(fn (?User $record): bool => $record === null)
-                    ->maxLength(255)
-                    ->dehydrateStateUsing(fn (string $state): ?string => filled($state) ? bcrypt($state) : null)
-                    ->dehydrated(fn (?string $state): bool => filled($state)),
-            ]);
+        return UserForm::configure($schema);
     }
 
     public static function table(Table $table): Table

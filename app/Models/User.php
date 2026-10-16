@@ -6,8 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\HasName;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasName
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -18,10 +19,19 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'firstName',
+        'lastName',
+        'image',
         'email',
         'password',
     ];
+
+    public function getFilamentName(): string
+    {
+        $name = trim(($this->firstName ?? '') . ' ' . ($this->lastName ?? ''));
+
+        return $name !== '' ? $name : $this->email;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
