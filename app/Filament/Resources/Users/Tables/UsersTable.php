@@ -19,24 +19,31 @@ class UsersTable
             ->columns([
                 TextColumn::make('id')
                     ->label('ID')
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->sortable(),
                 ImageColumn::make('image')
                     ->label('Imagem')
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->square(),
                 TextColumn::make('firstName')
                     ->label('Nome')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->sortable(),
                 TextColumn::make('lastName')
                     ->label('Sobrenome')
-                    ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: false)
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('email')
                     ->label('E-mail')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: false)
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Data de cadastro')
                     ->dateTime('d/m/Y H:i')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
             ])
             ->filters([
