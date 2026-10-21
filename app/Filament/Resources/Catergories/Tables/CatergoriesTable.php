@@ -8,6 +8,7 @@ use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 
 class CatergoriesTable
@@ -40,10 +41,12 @@ class CatergoriesTable
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),  
             ])
+
             ->filters([
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make(),
             ])

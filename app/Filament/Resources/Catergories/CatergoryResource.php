@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Catergories;
 
+use App\Filament\Resources\Catergories\RelationManagers\PostsRelationManager;
 use App\Filament\Resources\Catergories\Pages\CreateCatergory;
 use App\Filament\Resources\Catergories\Pages\EditCatergory;
 use App\Filament\Resources\Catergories\Pages\ListCatergories;
+use App\Filament\Resources\Catergories\Pages\ViewCatergory;
 use App\Filament\Resources\Catergories\Schemas\CatergoryForm;
 use App\Filament\Resources\Catergories\Tables\CatergoriesTable;
 use App\Models\Category;
@@ -35,7 +37,7 @@ class CatergoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PostsRelationManager::class,
         ];
     }
 
@@ -44,6 +46,7 @@ class CatergoryResource extends Resource
         return [
             'index' => ListCatergories::route('/'),
             'create' => CreateCatergory::route('/create'),
+            'view' => ViewCatergory::route('/{record}'),
             'edit' => EditCatergory::route('/{record}/edit'),
         ];
     }
