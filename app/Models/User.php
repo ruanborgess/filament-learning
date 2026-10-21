@@ -19,6 +19,7 @@ class User extends Authenticatable implements HasName
      * @var list<string>
      */
     protected $fillable = [
+        'name',
         'firstName',
         'lastName',
         'image',
@@ -31,6 +32,15 @@ class User extends Authenticatable implements HasName
         $name = trim(($this->firstName ?? '') . ' ' . ($this->lastName ?? ''));
 
         return $name !== '' ? $name : $this->email;
+    }
+
+    /**
+     * Keep Filament's make:filament-user command compatible with this schema,
+     * where the user's first name is stored in the firstName column.
+     */
+    public function setNameAttribute(string $value): void
+    {
+        $this->attributes['firstName'] = $value;
     }
 
     /**
