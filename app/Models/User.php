@@ -65,4 +65,12 @@ class User extends Authenticatable implements HasName
             'password' => 'hashed',
         ];
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'user_post')
+            ->withPivot('order')
+            ->orderBy('user_post.order');
+    }
+
 }

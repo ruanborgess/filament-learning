@@ -28,4 +28,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_post')
+            ->withPivot('order')
+            ->orderBy('user_post.order');
+    }
+
 }

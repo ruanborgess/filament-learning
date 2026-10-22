@@ -10,6 +10,17 @@ class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        if (filled($data['image_url'] ?? null)) {
+            $data['image'] = $data['image_url'];
+        }
+
+        unset($data['image_url']);
+
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [

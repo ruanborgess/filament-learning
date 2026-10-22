@@ -8,6 +8,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Support\Enums\Width;
 use Filament\Tables\Table;
 
 class PostsTable
@@ -62,6 +64,8 @@ class PostsTable
                 //
             ])
             ->recordActions([
+                ViewAction::make()
+                    ->modalWidth(Width::SevenExtraLarge),
                 EditAction::make(),
             ])
             ->toolbarActions([
