@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\HasName;
+use App\Enum\Role;
 
 class User extends Authenticatable implements HasName
 {
@@ -25,6 +25,7 @@ class User extends Authenticatable implements HasName
         'image',
         'email',
         'password',
+        'role',
     ];
 
     public function getFilamentName(): string
@@ -63,6 +64,7 @@ class User extends Authenticatable implements HasName
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' =>  Role::class,
         ];
     }
 
@@ -72,5 +74,21 @@ class User extends Authenticatable implements HasName
             ->withPivot('order')
             ->orderBy('user_post.order');
     }
+
+    public function isSubscriber(): bool
+    {
+        return $this->role === Role::Subscriber;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === Role::Admin;
+    }
+
+    public function isEditor(): bool
+    {
+        return $this->role === Role::Editor;
+    }
+
 
 }

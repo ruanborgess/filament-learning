@@ -2,17 +2,17 @@
 
 namespace App\Filament\Resources\Posts;
 
-use App\Filament\Resources\Posts\Pages\CreatePost;
-use App\Filament\Resources\Posts\Pages\EditPost;
-use App\Filament\Resources\Posts\Pages\ListPosts;
-use App\Filament\Resources\Posts\Schemas\PostForm;
 use App\Filament\Resources\Posts\Tables\PostsTable;
-use App\Models\Post;
-use BackedEnum;
+use App\Filament\Resources\Posts\Schemas\PostForm;
+use App\Filament\Resources\Posts\Pages\CreatePost;
+use App\Filament\Resources\Posts\Pages\ListPosts;
+use App\Filament\Resources\Posts\Pages\EditPost;
+use Filament\Support\Icons\Heroicon;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Models\Post;
+use BackedEnum;
 
 class PostResource extends Resource
 {

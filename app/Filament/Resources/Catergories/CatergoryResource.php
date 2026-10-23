@@ -3,18 +3,18 @@
 namespace App\Filament\Resources\Catergories;
 
 use App\Filament\Resources\Catergories\RelationManagers\PostsRelationManager;
+use App\Filament\Resources\Catergories\Tables\CatergoriesTable;
+use App\Filament\Resources\Catergories\Pages\ListCatergories;
+use App\Filament\Resources\Catergories\Schemas\CatergoryForm;
 use App\Filament\Resources\Catergories\Pages\CreateCatergory;
 use App\Filament\Resources\Catergories\Pages\EditCatergory;
-use App\Filament\Resources\Catergories\Pages\ListCatergories;
 use App\Filament\Resources\Catergories\Pages\ViewCatergory;
-use App\Filament\Resources\Catergories\Schemas\CatergoryForm;
-use App\Filament\Resources\Catergories\Tables\CatergoriesTable;
-use App\Models\Category;
-use BackedEnum;
+use Filament\Support\Icons\Heroicon;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Models\Category;
+use BackedEnum;
 
 class CatergoryResource extends Resource
 {

@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources\Catergories\RelationManagers;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\Action;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Resources\RelationManagers\RelationManager;
+use App\Filament\Resources\Posts\PostResource;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ToggleColumn;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\Action;
 use Filament\Tables\Table;
-use App\Filament\Resources\Posts\PostResource;
 use App\Models\Post;
 
 class PostsRelationManager extends RelationManager

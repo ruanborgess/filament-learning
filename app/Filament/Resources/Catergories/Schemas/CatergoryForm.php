@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Catergories\Schemas;
 
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 use App\Models\Category;
 
 class CatergoryForm

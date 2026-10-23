@@ -2,14 +2,17 @@
 
 namespace App\Filament\Resources\Posts\Tables;
 
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Tables\Filters\Filter;
+use Filament\Support\Enums\Width;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Support\Enums\Width;
 use Filament\Tables\Table;
 
 class PostsTable
@@ -61,7 +64,19 @@ class PostsTable
                 
             ])
             ->filters([
-                //
+                TernaryFilter::make('published')
+                    ->label('Publicado')
+                    ->placeholder('All')
+                    ->nullable()
+                    ->trueLabel('Publicado')
+                    ->falseLabel('Não publicado'),
+
+                SelectFilter::make('category_id')
+                    ->label('Categoria')
+                    ->relationship('category', 'name')
+                    ->multiple()
+                    ->searchable()
+                    ->preload(),
             ])
             ->recordActions([
                 ViewAction::make()
